@@ -42,3 +42,4 @@ jobs:
           sudo docker rmi tanmay4477/anime:v0 || true
           sudo docker image prune -f
           sudo docker run -d --name anime:v0 -p 8005:8000 tanmay4477/anime:v0
+
