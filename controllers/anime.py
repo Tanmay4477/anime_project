@@ -60,7 +60,10 @@ def get_recommendation(session, payload):
         id = payload['id']
         statement = select(User).where(User.id == id)
         user = session.exec(statement).first()
-        genres_from_db = user.genres
+        joined_string = ''.join(user.genres)
+        cleaned_string = joined_string.strip('{}')
+        split_items = cleaned_string.split(',')
+
         query = """
             query ($genre: [String]) {
                 Page(page: 1, perPage: 10) {
@@ -85,7 +88,7 @@ def get_recommendation(session, payload):
         
         # Set up the variables for the query
         variables = {
-            "genre": genres_from_db  # Ensure it's always a list
+            "genre": split_items  # Ensure it's always a list
         }
   
         response = requests.post(

@@ -1,6 +1,4 @@
 from fastapi import APIRouter, Depends
-# from api.controllers.auth import create_user_response, give_token
-# from utils.wraper import ResponseWraper, UserSchema
 from schemas.query import SearchRequest
 from sqlmodel import Session
 from db.config import get_session

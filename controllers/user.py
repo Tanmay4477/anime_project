@@ -12,16 +12,12 @@ def create_user_response(user: Register, session: Session):
     try:
         result = select(User).where(User.username == user.username)
         statement = session.exec(result).first()
-        print("fvnl")
+
         if statement:
             raise HTTPException(status_code=400, detail="Already exist")
-        print(user, "vnsdjkv")
         hashed_password = get_password_hash(user.password)
-        print(hashed_password, "dskjvbds")
-        print("vbsd")
         
-        db_user = User(username=user.username, password=hashed_password, genres="action")
-        print(db_user, "ajajjjj")
+        db_user = User(username=user.username, password=hashed_password, genres=[])
         db_user.password = hashed_password
         session.add(db_user)
         session.commit()

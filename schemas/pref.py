@@ -2,4 +2,4 @@ from pydantic import BaseModel
 from typing import List
 
 class Genres(BaseModel):
-    genres: str
+    genres: List[str] | None = None
