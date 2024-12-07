@@ -41,5 +41,5 @@ jobs:
           sudo docker rm anime:v0 || true
           sudo docker rmi tanmay4477/anime || true
           sudo docker image prune -f
-          sudo docker run -d --name anime -p 8005:8000 tanmay4477/anime:v0
+          sudo docker run --restart always -d --name anime -p 8005:8000 tanmay4477/anime:v0
 
